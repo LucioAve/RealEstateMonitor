@@ -1,0 +1,283 @@
+[
+  {
+    "id": "immobiliare_it",
+    "name": "Immobiliare.it",
+    "base_url": "https://www.immobiliare.it",
+    "enabled": true,
+    "scraper": "immobiliare",
+    "respect_robots_txt": false,
+    "warmup_url": "https://www.immobiliare.it/",
+    "search_urls": {
+      "vendita": "https://www.immobiliare.it/vendita-case/napoli/?criterio=data&ordine=desc",
+      "affitto": "https://www.immobiliare.it/affitto-case/napoli/?criterio=data&ordine=desc"
+    },
+    "listing_types": [
+      "vendita",
+      "affitto"
+    ],
+    "notes": "API JSON primaria + HTML __NEXT_DATA__ fallback + warm-up anti-403",
+    "url_pattern": {
+      "vendita": "https://www.immobiliare.it/vendita-case/{zona}/?criterio=data&ordine=desc",
+      "affitto": "https://www.immobiliare.it/affitto-case/{zona}/?criterio=data&ordine=desc"
+    }
+  },
+  {
+    "id": "subito_it",
+    "name": "Subito.it",
+    "base_url": "https://www.subito.it",
+    "enabled": true,
+    "scraper": "subito",
+    "respect_robots_txt": false,
+    "search_urls": {
+      "vendita": "https://www.subito.it/annunci-italia/vendita/immobili/?q=Napoli",
+      "affitto": "https://www.subito.it/annunci-italia/affitto/immobili/?q=Napoli"
+    },
+    "listing_types": [
+      "vendita",
+      "affitto"
+    ],
+    "notes": "robots.txt disabilitato: subito.it blocca i bot nel robots ma permette i browser",
+    "url_pattern": {
+      "vendita": "https://www.subito.it/annunci-italia/vendita/immobili/?q={zona}",
+      "affitto": "https://www.subito.it/annunci-italia/affitto/immobili/?q={zona}"
+    }
+  },
+  {
+    "id": "idealista_it",
+    "name": "Idealista.it",
+    "base_url": "https://www.idealista.it",
+    "enabled": true,
+    "scraper": "idealista",
+    "respect_robots_txt": false,
+    "search_urls": {
+      "vendita": "https://www.idealista.it/vendita-immobili/napoli-napoli/",
+      "affitto": "https://www.idealista.it/affitto-case/napoli-napoli/"
+    },
+    "listing_types": [
+      "vendita",
+      "affitto"
+    ],
+    "notes": "Protetto da DataDome: usa Selenium diretto con attesa challenge. Serve Chrome + undetected-chromedriver.",
+    "use_selenium": true,
+    "selenium_wait": 4.0,
+    "url_pattern": {
+      "vendita": "https://www.idealista.it/vendita-immobili/{zona}-{zona}/",
+      "affitto": "https://www.idealista.it/affitto-case/{zona}-{zona}/"
+    }
+  },
+  {
+    "id": "casa_it",
+    "name": "Casa.it",
+    "base_url": "https://www.casa.it",
+    "enabled": false,
+    "scraper": "generic",
+    "respect_robots_txt": true,
+    "search_urls": {
+      "vendita": "https://www.casa.it/vendita/residenziale/napoli/",
+      "affitto": "https://www.casa.it/affitto/residenziale/napoli/"
+    },
+    "listing_types": [
+      "vendita"
+    ],
+    "listing_selector": "div.listing-card",
+    "title_selector": "h2.listing-title",
+    "price_selector": "span.listing-price",
+    "location_selector": "span.listing-location",
+    "link_selector": "a.listing-link",
+    "notes": "Scraper generico — adattare i selettori dopo diagnosi",
+    "url_pattern": {
+      "vendita": "https://www.casa.it/vendita/residenziale/{zona}/",
+      "affitto": "https://www.casa.it/affitto/residenziale/{zona}/"
+    }
+  },
+  {
+    "id": "casa_accent_it",
+    "name": "Casà.it",
+    "base_url": "https://xn--casa-8oa.it",
+    "enabled": false,
+    "scraper": "generic",
+    "respect_robots_txt": false,
+    "search_urls": {
+      "vendita": "https://xn--casa-8oa.it/vendita/residenziale/napoli-na/",
+      "affitto": "https://xn--casa-8oa.it/affitto/residenziale/napoli-na/"
+    },
+    "listing_types": [
+      "vendita",
+      "affitto"
+    ],
+    "listing_selector": "article.ln-list__item, div.ln-list__item, li.ln-list__item",
+    "title_selector": "h2.ln-card__title, h3.ln-card__title, .card-title, .listing-title",
+    "price_selector": ".ln-card__price, .price, .listing-price, [class*=\"price\"]",
+    "location_selector": ".ln-card__location, .location, .listing-location, [class*=\"location\"]",
+    "link_selector": "a.ln-card__link, a[href*=\"/annunci/\"], a[href*=\"/immobile/\"]",
+    "date_selector": ".ln-card__date, .date, [class*=\"date\"]",
+    "notes": "URL 404 — da aggiornare. Procedura: apri https://xn--casa-8oa.it nel browser, cerca immobili a Napoli (vendita e affitto), copia le URL dalla barra degli indirizzi e aggiornale in search_urls. Poi rimetti enabled: true."
+  },
+  {
+    "id": "tecnorete_it",
+    "name": "Tecnorete.it",
+    "base_url": "https://www.tecnorete.it",
+    "enabled": false,
+    "scraper": "generic",
+    "respect_robots_txt": false,
+    "search_urls": {
+      "vendita": "https://www.tecnorete.it/annunci/immobili/vendita/napoli.html",
+      "affitto": "https://www.tecnorete.it/annunci/immobili/affitto/napoli.html"
+    },
+    "listing_types": [
+      "vendita",
+      "affitto"
+    ],
+    "listing_selector": "div.col-immobile, article.property-card, div.card-immobile, li.immobile",
+    "title_selector": "h2.titolo, h3.titolo, .card-title, .property-title, [class*=\"titolo\"]",
+    "price_selector": "span.prezzo, .price, .property-price, [class*=\"prezzo\"]",
+    "location_selector": "span.zona, .location, [class*=\"zona\"], [class*=\"localita\"]",
+    "link_selector": "a[href*=\"/it/immobile\"], a[href*=\"/it/annuncio\"], .card-link",
+    "date_selector": "",
+    "notes": "URL 404 — da aggiornare. Procedura: apri https://www.tecnorete.it nel browser, cerca immobili a Napoli (vendita e affitto), copia le URL dalla barra degli indirizzi e aggiornale in search_urls. Poi rimetti enabled: true. Nota: il sito potrebbe caricare annunci via JavaScript, in quel caso aggiungi use_selenium: true.",
+    "url_pattern": {
+      "vendita": "https://www.tecnorete.it/annunci/immobili/vendita/{zona}.html",
+      "affitto": "https://www.tecnorete.it/annunci/immobili/affitto/{zona}.html"
+    }
+  },
+  {
+    "id": "tecnocasa_it",
+    "name": "Tecnocasa",
+    "base_url": "https://www.tecnocasa.it",
+    "enabled": false,
+    "scraper": "generic",
+    "respect_robots_txt": true,
+    "use_selenium": false,
+    "search_urls": {
+      "vendita": "https://www.tecnocasa.it/annunci/immobili/vendita/napoli.html",
+      "affitto": "https://www.tecnocasa.it/annunci/immobili/affitto/napoli.html"
+    },
+    "listing_types": [
+      "vendita",
+      "affitto"
+    ],
+    "listing_selector": "article, div[class*='card'], li[class*='item'], div[class*='immobile'], div[class*='property']",
+    "title_selector": "h2, h3, [class*='title'], [class*='titolo']",
+    "price_selector": "[class*='price'], [class*='prezzo']",
+    "location_selector": "[class*='location'], [class*='zona'], [class*='comune'], [class*='citt']",
+    "link_selector": "a[href]",
+    "date_selector": "",
+    "notes": "AGGIUNTA v1.1 — DA VERIFICARE prima dell'uso: abilita, controlla che gli annunci compaiano, correggi i selettori CSS se servono. URL per CITTA' (i quartieri danno 404).",
+    "url_pattern": {
+      "vendita": "https://www.tecnocasa.it/annunci/immobili/vendita/{zona}.html",
+      "affitto": "https://www.tecnocasa.it/annunci/immobili/affitto/{zona}.html"
+    }
+  },
+  {
+    "id": "gabetti_it",
+    "name": "Gabetti",
+    "base_url": "https://www.gabetti.it",
+    "enabled": false,
+    "scraper": "generic",
+    "respect_robots_txt": true,
+    "use_selenium": true,
+    "search_urls": {
+      "vendita": "https://www.gabetti.it/vendita/napoli",
+      "affitto": "https://www.gabetti.it/affitto/napoli"
+    },
+    "listing_types": [
+      "vendita",
+      "affitto"
+    ],
+    "listing_selector": "article, div[class*='card'], li[class*='item'], div[class*='immobile'], div[class*='property']",
+    "title_selector": "h2, h3, [class*='title'], [class*='titolo']",
+    "price_selector": "[class*='price'], [class*='prezzo']",
+    "location_selector": "[class*='location'], [class*='zona'], [class*='comune'], [class*='citt']",
+    "link_selector": "a[href]",
+    "date_selector": "",
+    "notes": "AGGIUNTA v1.1 — DA VERIFICARE prima dell'uso: abilita, controlla che gli annunci compaiano, correggi i selettori CSS se servono. Serve browser: pagina-ponte con fingerprint JS + redirect.",
+    "url_pattern": {
+      "vendita": "https://www.gabetti.it/vendita/{zona}",
+      "affitto": "https://www.gabetti.it/affitto/{zona}"
+    }
+  },
+  {
+    "id": "professionecasa_it",
+    "name": "Professionecasa",
+    "base_url": "https://www.professionecasa.it",
+    "enabled": false,
+    "scraper": "generic",
+    "respect_robots_txt": true,
+    "use_selenium": false,
+    "search_urls": {
+      "vendita": "https://www.professionecasa.it/vendita/napoli",
+      "affitto": "https://www.professionecasa.it/affitto/napoli"
+    },
+    "listing_types": [
+      "vendita",
+      "affitto"
+    ],
+    "listing_selector": "article, div[class*='card'], li[class*='item'], div[class*='immobile'], div[class*='property']",
+    "title_selector": "h2, h3, [class*='title'], [class*='titolo']",
+    "price_selector": "[class*='price'], [class*='prezzo']",
+    "location_selector": "[class*='location'], [class*='zona'], [class*='comune'], [class*='citt']",
+    "link_selector": "a[href]",
+    "date_selector": "",
+    "notes": "AGGIUNTA v1.1 — DA VERIFICARE prima dell'uso: abilita, controlla che gli annunci compaiano, correggi i selettori CSS se servono. Verificare formato URL reale del sito.",
+    "url_pattern": {
+      "vendita": "https://www.professionecasa.it/vendita/{zona}",
+      "affitto": "https://www.professionecasa.it/affitto/{zona}"
+    }
+  },
+  {
+    "id": "casae_it",
+    "name": "CasaÈ",
+    "base_url": "https://www.casae.it",
+    "enabled": false,
+    "scraper": "generic",
+    "respect_robots_txt": true,
+    "use_selenium": false,
+    "search_urls": {
+      "vendita": "https://www.casae.it/immobili/vendita/napoli",
+      "affitto": "https://www.casae.it/immobili/affitto/napoli"
+    },
+    "listing_types": [
+      "vendita",
+      "affitto"
+    ],
+    "listing_selector": "article, div[class*='card'], li[class*='item'], div[class*='immobile'], div[class*='property']",
+    "title_selector": "h2, h3, [class*='title'], [class*='titolo']",
+    "price_selector": "[class*='price'], [class*='prezzo']",
+    "location_selector": "[class*='location'], [class*='zona'], [class*='comune'], [class*='citt']",
+    "link_selector": "a[href]",
+    "date_selector": "",
+    "notes": "AGGIUNTA v1.1 — DA VERIFICARE prima dell'uso: abilita, controlla che gli annunci compaiano, correggi i selettori CSS se servono. Verificare formato URL reale del sito.",
+    "url_pattern": {
+      "vendita": "https://www.casae.it/immobili/vendita/{zona}",
+      "affitto": "https://www.casae.it/immobili/affitto/{zona}"
+    }
+  },
+  {
+    "id": "grimaldi_it",
+    "name": "Grimaldi Immobiliare",
+    "base_url": "https://www.grimaldi.net",
+    "enabled": false,
+    "scraper": "generic",
+    "respect_robots_txt": true,
+    "use_selenium": true,
+    "search_urls": {
+      "vendita": "https://www.grimaldi.net/it/vendita/napoli",
+      "affitto": "https://www.grimaldi.net/it/affitto/napoli"
+    },
+    "url_pattern": {
+      "vendita": "https://www.grimaldi.net/it/vendita/{zona}",
+      "affitto": "https://www.grimaldi.net/it/affitto/{zona}"
+    },
+    "listing_types": [
+      "vendita",
+      "affitto"
+    ],
+    "listing_selector": "article, div[class*='card'], div[class*='immobile'], div[class*='property']",
+    "title_selector": "h2, h3, [class*='title'], [class*='titolo']",
+    "price_selector": "[class*='price'], [class*='prezzo']",
+    "location_selector": "[class*='location'], [class*='zona'], [class*='citt']",
+    "link_selector": "a[href*='/immobile'], a[href]",
+    "date_selector": "",
+    "notes": "DA VERIFICARE prima dell'uso. Il sito serve una pagina-ponte con fingerprint JS che poi reindirizza (richiede use_selenium=true e l'attesa del redirect, già supportata). Schema URL dedotto da un redirect osservato realmente: /vendita/napoli?page=1&tipoDestinazioneUso=1 — i selettori CSS sono generici e NON sono stati validati contro il sito reale: abilita, avvia una ricerca, e se risultano 0 annunci controlla logs/debug_html/ per correggerli."
+  }
+]

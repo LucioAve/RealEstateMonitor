@@ -1,0 +1,66 @@
+{
+  "version": "1.4",
+  "search_zones": [
+    "Chiaiano",
+    "Piscinola",
+    "Scampia",
+    "Secondigliano",
+    "Capodichino",
+    "Rione Altro",
+    "Colli Aminei",
+    "Capodimonte",
+    "Vomero",
+    "Arenella"
+  ],
+  "scraping": {
+    "max_pages_per_site": 3,
+    "request_delay_seconds": 2.0,
+    "timeout_seconds": 25,
+    "selenium_headless": true
+  },
+  "filters": {
+    "listing_types": [
+      "vendita",
+      "affitto"
+    ],
+    "min_price": 0,
+    "max_price": 9999999,
+    "keywords_exclude": []
+  },
+  "geo_filter": {
+    "mode": "text",
+    "keywords": [],
+    "bounding_box": {}
+  },
+  "schedule": {
+    "time": "08:00",
+    "run_on_start": false
+  },
+  "notifications": {
+    "enabled": false,
+    "email": {
+      "enabled": false,
+      "smtp_host": "",
+      "smtp_port": "587",
+      "username": "",
+      "password": "",
+      "to": "",
+      "from": ""
+    },
+    "telegram": {
+      "enabled": false,
+      "bot_token": "",
+      "chat_id": ""
+    }
+  },
+  "database": {
+    "path": "database/listings.db"
+  },
+  "output": {
+    "export_dir": "output"
+  },
+  "logging": {
+    "level": "INFO"
+  },
+  "main_city": "Napoli"
+}
